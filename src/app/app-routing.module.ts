@@ -10,7 +10,7 @@ const routes: Routes = [
     component: BlogListComponent,
     pathMatch: 'full'
   }, {
-    path: 'blog',
+    path: 'post/:link',
     component: BlogPostComponent
   }, {
     path: '**',
