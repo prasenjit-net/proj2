@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-blog-excerpt',
@@ -9,7 +9,11 @@ export class BlogExcerptComponent implements OnInit {
 
   constructor() { }
 
+  @Input("entry")
+  entryData:any;
+
   ngOnInit() {
+    console.info(this.entryData);
   }
 
 }

@@ -1,0 +1,15 @@
+[{
+    "title": "Post 1",
+    "description": "Its a simple post description.",
+    "link": "post-1",
+    "content": "post-1.md",
+    "author": "Prasenjit",
+    "date": "Saturday 14, October, 2017"
+},{
+    "title": "Post 2",
+    "description": "Its another simple post description.",
+    "link": "post-2",
+    "content": "post-2.md",
+    "author": "Prasenjit",
+    "date": "Saturday 14, October, 2017"
+}]

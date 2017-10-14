@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-blog-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogListComponent implements OnInit {
 
-  constructor() { }
+  blogData: any;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get("assets/posts.json").subscribe(data => {
+      this.blogData = data;
+    });
   }
 
 }
