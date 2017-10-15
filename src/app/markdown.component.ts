@@ -12,12 +12,11 @@ export class MarkdownComponent implements AfterViewInit {
 
     @Input()
     set data(value: string) {
-        console.info(value);
         this.html = markdown.toHTML(value);
-        console.info(this.html);
     }
 
     constructor(private router: Router) { }
+
     ngAfterViewInit() {
         let links: HTMLAnchorElement[] = this.root.nativeElement.querySelectorAll('a');
         links.forEach(el => el.addEventListener('click', event => {
