@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class BlogListComponent implements OnInit {
 
   blogData: any;
+  currentPage = 1;
 
   constructor(private http: HttpClient) { }
 

@@ -5,11 +5,4 @@
 <app-blog-excerpt *ngFor="let entry of blogData" [entry]="entry"></app-blog-excerpt>
 
 <!-- Pagination -->
-<ul class="pagination justify-content-center mb-4">
-  <li class="page-item">
-    <a class="page-link" href="#">&larr; Older</a>
-  </li>
-  <li class="page-item disabled">
-    <a class="page-link" href="#">Newer &rarr;</a>
-  </li>
-</ul>
+<ngb-pagination [collectionSize]="blogData.length" [(page)]="currentPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
