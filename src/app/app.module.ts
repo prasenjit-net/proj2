@@ -4,6 +4,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 
+import { DisqusModule } from "ngx-disqus";
+
 import { AppComponent } from './app.component';
 import { BlogExcerptComponent } from './blog-excerpt/blog-excerpt.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
@@ -25,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    DisqusModule.forRoot("blog-template-pp"),
     NgbModule.forRoot()
   ],
   providers: [],
