@@ -13,7 +13,6 @@ export class BlogExcerptComponent implements OnInit {
   entryData:any;
 
   ngOnInit() {
-    console.info(this.entryData);
   }
 
 }

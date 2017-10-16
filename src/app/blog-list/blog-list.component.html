@@ -1,8 +1,9 @@
-<h1 class="my-4">Page Heading
-  <small>Secondary Text</small>
+<h1 class="my-4">Blog List
+  <small>Available Blogs</small>
 </h1>
 
 <app-blog-excerpt *ngFor="let entry of blogData" [entry]="entry"></app-blog-excerpt>
 
 <!-- Pagination -->
-<ngb-pagination [collectionSize]="blogData.length" [(page)]="currentPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+<ngb-pagination [collectionSize]="totalBlogCount" [(page)]="currentPage" [pageSize]="5"
+  [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>

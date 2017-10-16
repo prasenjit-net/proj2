@@ -6,7 +6,7 @@ import { BlogPostComponent } from './blog-post/blog-post.component'
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'list/:page',
     component: BlogListComponent,
     pathMatch: 'full'
   }, {
@@ -14,7 +14,7 @@ const routes: Routes = [
     component: BlogPostComponent
   }, {
     path: '**',
-    component: BlogListComponent
+    redirectTo: '/list/1'
   }
 ];
 
