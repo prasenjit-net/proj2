@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-blog-list',
@@ -24,17 +24,19 @@ export class BlogListComponent implements OnInit {
   }
 
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private firestore : AngularFirestore) { }
 
   ngOnInit() {
-    this.http.get("assets/posts.json").subscribe(data => {
-      this.allBlogData = data as Array<Object>;
-      // this.refreshList("1");
-      this.totalBlogCount = this.allBlogData.length;
-      this.route.paramMap.subscribe(pm => {
-        this.refreshList(pm.get("page"));
-      });
-    });
+    this.firestore.collection('posts').valueChanges()
+      .subscribe(data => {
+        console.info(data);
+        this.allBlogData = data as Array<Object>;
+        // this.refreshList("1");
+        this.totalBlogCount = this.allBlogData.length;
+        this.route.paramMap.subscribe(pm => {
+          this.refreshList(pm.get("page"));
+        });
+      })
   }
 
   private refreshList(page: string) {

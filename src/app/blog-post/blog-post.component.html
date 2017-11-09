@@ -1,21 +1,20 @@
 <!-- Title -->
-<h1 class="mt-4">{{blogData["title"]}}</h1>
+<h1 class="mt-4">{{ (post | async)?.title }}</h1>
 
 <!-- Author -->
 <p class="lead">
   by
-  <a href="#">{{blogData["author"]}}</a>
+  <a href="#">{{ (post | async)?.author }}</a>
 </p>
 
 <hr>
 
 <!-- Date/Time -->
-<p>Posted on {{blogData["date"]}}</p>
+<p>Posted on {{ (post | async)?.date }}</p>
 
 <hr>
 
 <markdown [data]="md"></markdown>
 
-<div [innerHtml]="html" #root></div>
 
-<disqus [identifier]='blogData["link"]'></disqus>
+<disqus [identifier]='(post | async)?.link'></disqus>

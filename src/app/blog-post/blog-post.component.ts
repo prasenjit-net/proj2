@@ -1,3 +1,5 @@
+import { Post } from './../post';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
@@ -14,41 +16,24 @@ import 'rxjs/Rx';
 })
 export class BlogPostComponent implements OnInit {
   md: string;
-  blogData: any;
-  allBlogData: Array<Object>;
+  document: AngularFirestoreDocument<Post>;
+  post: Observable<Post>;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private firestore : AngularFirestore) { }
 
   ngOnInit() {
-    this.http.get("assets/posts.json").subscribe(data => {
-      this.allBlogData = data as Array<Object>;
-      this.route.paramMap.subscribe(pm => {
-        var link = pm.get("link");
-        for (var entry of this.allBlogData) {
-          if (entry["link"] === link) {
-            this.blogData = entry;
-            this.http.get(`assets/${entry["link"]}.md`, {responseType: 'text'})
-            .subscribe(mdText => {
-              this.md = mdText;
-            });
-          }
-        }
+    this.route.paramMap.subscribe(pm=>{
+      var link = pm.get("link");
+      this.document = this.firestore.doc<Post>(`posts/${link}`);
+      this.post = this.document.valueChanges();
+      this.post.subscribe(post =>{
+        console.info(post);
+        this.http.get(`assets/${post.link}.md`, {responseType: 'text'})
+        .subscribe(mdText => {
+          this.md = mdText;
+        });
       });
     });
-    // this.http.get("assets/posts.json")
-    //   .mergeMap(x => Observable.from(x as Array<Object>))
-    //   .filter(e => {
-    //     var link = this.route.snapshot.paramMap.get("link");
-    //     var r = e["link"] === link;
-    //     return r;
-    //   })
-    //   .subscribe(data => {
-    //     this.blogData = data;
-    //     this.http.get(`assets/${data["link"]}.md`, {responseType: 'text'})
-    //     .subscribe(mdText => {
-    //       this.md = mdText;
-    //     });
-    //   });
   }
 
 }
