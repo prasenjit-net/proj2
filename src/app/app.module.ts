@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
+import { AngularFireAuthModule } from 'angularfire2/auth'
 
 import { DisqusModule } from "ngx-disqus";
 
@@ -16,6 +17,8 @@ import { RightPanelComponent } from './right-panel/right-panel.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
 import { MarkdownComponent } from './markdown.component';
 import { AppRoutingModule } from './app-routing.module';
+import { EmailPasswordLoginComponent } from './email-password-login/email-password-login.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { AppRoutingModule } from './app-routing.module';
     BlogListComponent,
     RightPanelComponent,
     BlogPostComponent,
-    MarkdownComponent
+    MarkdownComponent,
+    EmailPasswordLoginComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,8 @@ import { AppRoutingModule } from './app-routing.module';
     DisqusModule.forRoot("blog-template-pp"),
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
