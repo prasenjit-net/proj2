@@ -31,4 +31,8 @@ export class EmailPasswordLoginComponent implements OnInit {
   newPost(){
     this.router.navigateByUrl("/login");
   }
+
+  loginWithGoogle(){
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
 }
