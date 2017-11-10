@@ -1,3 +1,4 @@
+import { LoginGuard } from './login.guard';
 import { environment } from './../environments/environment.prod';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -41,7 +42,7 @@ import { NewPostComponent } from './new-post/new-post.component';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

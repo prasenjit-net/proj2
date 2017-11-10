@@ -27,11 +27,7 @@ export class BlogPostComponent implements OnInit {
       this.document = this.firestore.doc<Post>(`posts/${link}`);
       this.post = this.document.valueChanges();
       this.post.subscribe(post =>{
-        console.info(post);
-        this.http.get(`assets/${post.link}.md`, {responseType: 'text'})
-        .subscribe(mdText => {
-          this.md = mdText;
-        });
+        this.md = post.content;
       });
     });
   }

@@ -1,3 +1,18 @@
-<p>
-  new-post works!
-</p>
+<div class="card my-4">
+  <h5 class="card-header">Create A New Blog Post</h5>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="blog-title">Title for the new post</label>
+      <input type="text" class="form-control" id="blog-title" placeholder="Title" #t>
+    </div>
+    <div class="form-group">
+      <label for="blog-description">Short description for the new post</label>
+      <input type="text" class="form-control" id="blog-description" placeholder="Description" #d>
+    </div>
+    <div class="form-group">
+      <label for="blog-body">Blog body goes here</label>
+      <textarea class="form-control" id="blog-body" rows="15" #b></textarea>
+    </div>
+    <button type="button" class="btn btn-success" (click)="save(t.value,d.value,b.value)">Save</button>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BlogListComponent } from './blog-list/blog-list.component'
 import { BlogPostComponent } from './blog-post/blog-post.component'
 import { NewPostComponent } from './new-post/new-post.component';
+import { LoginGuard } from './login.guard';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
     component: BlogPostComponent
   }, {
     path: 'new',
+    canActivate: [LoginGuard],
     component: NewPostComponent
   }, {
     path: '**',
