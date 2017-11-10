@@ -17,7 +17,7 @@ export class NewPostComponent implements OnInit {
   }
 
   save(title: string, description: string, body: string) {
-    const link = title.replace(" ", "-");
+    const link = title.replace(/\W/g,'-');
     const now = new Date();
     const author = this.afAuth.authState.subscribe(user => {
       const post: Post = { title: title, content: body, link: link, date: now, author: user.email, description: description };
