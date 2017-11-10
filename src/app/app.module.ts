@@ -18,7 +18,6 @@ import { RightPanelComponent } from './right-panel/right-panel.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
 import { MarkdownComponent } from './markdown.component';
 import { AppRoutingModule } from './app-routing.module';
-import { EmailPasswordLoginComponent } from './email-password-login/email-password-login.component';
 import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
@@ -29,7 +28,6 @@ import { NewPostComponent } from './new-post/new-post.component';
     RightPanelComponent,
     BlogPostComponent,
     MarkdownComponent,
-    EmailPasswordLoginComponent,
     NewPostComponent
   ],
   imports: [
